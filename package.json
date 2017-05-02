@@ -1,0 +1,29 @@
+{
+  "name": "connecter",
+  "version": "1.0.0",
+  "description": "Connect to localhost API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahsankhan1911/connecter.git"
+  },
+  "keywords": [
+    "Localhost",
+    "Localserver"
+  ],
+  "author": "no one",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahsankhan1911/connecter/issues"
+  },
+  "homepage": "https://github.com/ahsankhan1911/connecter#readme",
+  "dependencies": {
+        "express": "*",
+    "socket.io": "*"
+  
+  }
+}

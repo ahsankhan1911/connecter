@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
-    <script src="jquery-3.2.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
 
@@ -15,11 +16,32 @@
         body {
             margin: 30px;
         }
+
+        #messageArea {
+          display: none;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="row">
+
+    <div id="userFormArea" class="row">
+   
+   <div class="col-md-12">
+
+       <form id="userForm">
+                <div class="form-group">
+                    <label>Enter Username</label>
+                    <input class="form-control" id="username">
+                    <br/>
+                    <input type="submit" class="btn btn-primary" value="Log In">
+                </div>
+            </form>
+   </div>
+    
+    </div>
+
+    <div id= "messageArea"class="row">
 
         <div class="col-md-4">
            <div class="well">
@@ -44,7 +66,48 @@
 
 <script>
     $(function () {
-        var socket = io.connect();
+        let socket = io.connect();
+        let $messageForm = $('#messageForm');
+        let $message = $('#message');
+        let $chat = $('#chat');
+        let $messageArea = $('#messageArea');
+        let $userFormArea = $('#userFormArea');
+        let $userForm = $('#userForm');
+        let $users = $('#users');
+        let $username = $('#username');
+        
+
+
+        $messageForm.submit((e) => {
+            e.preventDefault();
+            socket.emit('send message', $message.val());
+            $message.val('');
+        });
+        socket.on('new message', (data) => {
+            $chat.append('<div class="well"><strong>'+ data.user +'</strong>' +": " +data.msg + '</div>')
+        });
+        
+        $userForm.submit((e) => {
+            e.preventDefault();
+            socket.emit('new user', $username.val(), (data) => {
+                if(data){
+                    $userFormArea.hide();
+                    $messageArea.show();
+                }
+            });
+            $username.val('');
+        });
+        socket.on('get users', (data) => {
+
+            let html = '';
+
+            for(i=0; i<data.length; i++){
+                html += '<li class="list-group-item">' + data[i] + '</li>';
+            }
+
+            $users.html(html);
+
+        });
     });
 </script>
 </body>
