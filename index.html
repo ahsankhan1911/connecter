@@ -50,7 +50,9 @@
            </div>
         </div>
         <div class="col-md-8">
-            <div class="chat" id="chat"></div>
+            <div class="panel panel-default">
+    <div class="panel-body" id="chat"></div>
+        </div>
 
             <form id="messageForm">
                 <div class="form-group">
@@ -84,7 +86,7 @@
             $message.val('');
         });
         socket.on('new message', (data) => {
-            $chat.append('<div class="well"><strong>'+ data.user +'</strong>' +": " +data.msg + '</div>')
+            $chat.append('<div><strong>'+ data.user +'</strong>' +": " +data.msg + '</div>')
         });
         
         $userForm.submit((e) => {
@@ -102,7 +104,7 @@
             let html = '';
 
             for(i=0; i<data.length; i++){
-                html += '<li class="list-group-item">' + data[i] + '</li>';
+                html += '<p class="alert alert-success">' + data[i] + '</p>';
             }
 
             $users.html(html);
