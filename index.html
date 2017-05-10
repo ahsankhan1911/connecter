@@ -12,9 +12,9 @@
     <title>Title</title>
 
     <style>
-        body {
+        /*body {
             Margin: 30px;
-        }
+        }*/
 
         #messageArea {
           display: none;
@@ -23,9 +23,7 @@
     </style>
 </head>
 <body>
-<div class="container-fluid">
-
-    <div id="userFormArea" class="row">
+    <!--<div id="userFormArea" class="row">
    
    <div class="col-md-3">
 
@@ -39,11 +37,22 @@
             </form>
    </div>
     
-    </div>
+    </div>-->
+ 
+  <div id="userFormArea" class="wrapper">
+      <h1 class="heading">Connecter</h1>
+    <form class="form-signin" id="userForm">       
+      <h2 class="form-signin-heading">Please login</h2>
+      <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required="required" autofocus="" />    
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+    </form>
+  </div>
+
+
 
     <div id= "messageArea"class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-2">
            <div class="well">
                <h3>Online Users</h3>
                <ul class="list-group" id="users"></ul>
@@ -64,7 +73,7 @@
             </form>
         </div>
     </div>
-</div>
+
 
 <script>
     $(function () {
@@ -104,7 +113,7 @@
             let html = '';
 
             for(i=0; i<data.length; i++){
-                html += '<p class="alert alert-success">' + data[i] + '</p>';
+                html += '<p>' + data[i] + '</p>';
             }
 
             $users.html(html);
