@@ -38,7 +38,7 @@
    </div>
     
     </div>-->
- 
+ <div class="container-fluid">
   <div id="userFormArea" class="wrapper">
       <h1 class="heading">Connecter</h1>
     <form class="form-signin" id="userForm">       
@@ -66,14 +66,14 @@
             <form id="messageForm">
                 <div class="form-group">
                     <label>Enter a message</label>
-                    <textarea class="form-control" id="message"></textarea>
+                    <textarea class="form-control" id="message" cols="number" style="resize: none"></textarea>
                     <br/>
                     <input type="submit" class="btn btn-primary" value="Send Message"/>
                 </div>
             </form>
         </div>
     </div>
-
+</div>
 
 <script>
     $(function () {
@@ -113,7 +113,7 @@
             let html = '';
 
             for(i=0; i<data.length; i++){
-                html += '<p>' + data[i] + '</p>';
+                html += '<p style="color: lightgreen;">' + data[i] + '</p>';
             }
 
             $users.html(html);
