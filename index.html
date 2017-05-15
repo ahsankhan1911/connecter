@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+ 
 
 
     <title>Title</title>
@@ -23,27 +23,15 @@
     </style>
 </head>
 <body>
-    <!--<div id="userFormArea" class="row">
-   
-   <div class="col-md-3">
 
-       <form id="userForm">
-                <div class="form-group">
-                    <label>Enter Username</label>
-                    <input class="form-control" id="username">
-                    <br/>
-                    <input type="submit" class="btn btn-primary" value="Log In">
-                </div>
-            </form>
-   </div>
-    
-    </div>-->
  <div class="container-fluid">
   <div id="userFormArea" class="wrapper">
-      <h1 class="heading">Connecter</h1>
+      <div class="h1">Connecter</div>
+
     <form class="form-signin" id="userForm">       
       <h2 class="form-signin-heading">Please login</h2>
-      <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required="required" autofocus="" />    
+      <input type="text" class="form-control" name="username" id="username" placeholder="Username" required="required" autofocus="" /> 
+            <input type="text" class="form-control" name="password" id="password" placeholder="Password" autofocus="" />    
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
     </form>
   </div>
