@@ -29,7 +29,8 @@ res.sendFile(__dirname+'/index.html');
 
 io.sockets.on('connection' , (socket) => {
 connections.push(socket);
-console.log("Connected: %s sockets connected", connections.length);
+console.log("Connected Socket" + connections.length + "at " + socket.handshake.time);
+//console.log(connections );
  
 //disconnect
   socket.on('disconnected', (data) => {
@@ -39,12 +40,15 @@ users.splice(users.indexOf(socket.username), 1)
    updateUsernames();
     console.log("Disconnected: %s sockets connected", connections.length);
   });
+
+  
  
  //Send Message\
 
  socket.on('send message', (data) => {
      
-     io.sockets.emit('new message', {msg: data, user: socket.username});
+     io.sockets.emit('new message', {msg: data, user: socket.username, time: socket.handshake.time});
+     console.log(data);
  });
 
  //New user 

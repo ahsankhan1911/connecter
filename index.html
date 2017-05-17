@@ -6,21 +6,12 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
- 
 
 
-    <title>Title</title>
 
-    <style>
-        /*body {
-            Margin: 30px;
-        }*/
+    <title>Connecter - Connects Mass very Easily</title>
 
-        #messageArea {
-          display: none;
-        }
 
-    </style>
 </head>
 <body>
 
@@ -63,6 +54,7 @@
     </div>
 </div>
 
+
 <script>
     $(function () {
         let socket = io.connect();
@@ -83,7 +75,7 @@
             $message.val('');
         });
         socket.on('new message', (data) => {
-            $chat.append('<div><strong>'+ data.user +'</strong>' +": " +data.msg + '</div>')
+            $chat.append('<div><strong>'+ data.user +'</strong>' +": " +data.msg + ' <span class="time">'+ data.time + '</span></div>');
         });
         
         $userForm.submit((e) => {
@@ -92,6 +84,7 @@
                 if(data){
                     $userFormArea.hide();
                     $messageArea.show();
+                    console.log(data);
                 }
             });
             $username.val('');
@@ -108,6 +101,6 @@
 
         });
     });
-</script>
+    </script>
 </body>
 </html>
