@@ -2,8 +2,9 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
-// const bodyParser = require ('body-parser');
-// const mongoose = require('mongoose');
+const bodyParser = require ('body-parser');
+const mongoose = require('mongoose');
+const Users = require( './user/Model');
 const server = require('http').createServer(app);
 const io = require('socket.io').listen(server);
 //const Boom  = require('boom');
@@ -11,11 +12,20 @@ const io = require('socket.io').listen(server);
 users = [];
 connections = [];
 
-//
-// app.use(bodyParser.json()); // support json encoded bodies
-// app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-//app.use('/users', require('./user'));
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+// app.use('/users', require('./user'));
+
+// mongoose.connect('mongodb://localhost/connectorUserDB', (err) => {
+//     if(err){
+//         console.log(err);
+//     }
+//     else {
+//         console.log("Database is now Connected")
+//     }
+// });
 
 server.listen(port);
     console.log(`Running server on ${port}`);
@@ -27,9 +37,13 @@ app.get('/', (req, res) => {
 res.sendFile(__dirname+'/index.html'); 
 });
 
+app.get('/home', (req, res) => {
+res.sendFile(__dirname+'/home.html'); 
+});
+
 io.sockets.on('connection' , (socket) => {
 connections.push(socket);
-console.log("Connected Socket" + connections.length + "at " + socket.handshake.time);
+console.log("Connected Socket " + connections.length + " at " + socket.handshake.time.anchor);
 //console.log(connections );
  
 //disconnect
