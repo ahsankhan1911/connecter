@@ -18,7 +18,9 @@ new_user.save((err, user) => {
         res.json(err);
     }
 })
-}
+};
+
+
 exports.UserlogIn = (req, res) => {
 
 

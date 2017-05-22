@@ -27,8 +27,8 @@ let UserSchema = new Schema({
         firstname:   {type: String, required: true},
         lastname: {type: String, required: true},
         email: {type: String, lowercase: true, unique: true, validate: EmailValidator, required: true },
-        phone: {type: Number, required: true , validate: PhoneValidator},
         password: {type: String, required: true},
+        confirmPassword: {type: String, required: true}
     }
 );
 

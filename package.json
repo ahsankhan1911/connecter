@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/ahsankhan1911/connecter#readme",
   "dependencies": {
-    "express": "*",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
     "mongoose": "^4.9.10",
     "mongoose-validator": "^1.2.6",
     "socket.io": "*"
