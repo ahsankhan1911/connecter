@@ -18,14 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // app.use('/users', require('./user'));
 
-// mongoose.connect('mongodb://localhost/connectorUserDB', (err) => {
-//     if(err){
-//         console.log(err);
-//     }
-//     else {
-//         console.log("Database is now Connected")
-//     }
-// });
+mongoose.connect('mongodb://localhost/connectorUserDB', (err) => {
+    if(err){
+        console.log(err);
+    }
+    else {
+        console.log("Database is now Connected")
+    }
+});
 
 server.listen(port);
     console.log(`Running server on ${port}`);

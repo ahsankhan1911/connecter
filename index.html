@@ -38,6 +38,8 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
+
+								<!--LogIn Form-->
 								<form id="login-form" method="post" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="2" class="form-control" placeholder="Username" value="">
@@ -66,6 +68,10 @@
 										</div>
 									</div>
 								</form>
+                                <!--LogIn form ends-->
+
+
+								<!--Registration Form-->
 								<form id="register-form" method="post" role="form" style="display: none;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
@@ -87,6 +93,9 @@
 										</div>
 									</div>
 								</form>
+
+								<!--Registration Form ends-->
+
 							</div>
 						</div>
 					</div>
@@ -188,7 +197,8 @@
 		$(this).addClass('active');
 		e.preventDefault();
 	});
-
+      
+	  $("#register-form").submit('/signup');
 });
 
     </script>
